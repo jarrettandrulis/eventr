@@ -8,3 +8,4 @@ settings.production.json
 ./index.md
 ./doc/
 ./_config.yml
+./.gitignore
