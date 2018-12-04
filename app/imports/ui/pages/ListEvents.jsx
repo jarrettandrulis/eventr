@@ -2,13 +2,13 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Table, Header, Loader } from 'semantic-ui-react';
 import { Events } from '/imports/api/events/events';
-import StuffItem from '/imports/ui/components/StuffItem';
+import EventItem from '/imports/ui/components/EventItem';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListStuff extends React.Component {
+/** Renders a table containing all of the Stuff documents. Use <EventItem> to render each row. */
+class ListEvents extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -19,7 +19,7 @@ class ListStuff extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h2" textAlign="center">List Stuff</Header>
+          <Header as="h1" textAlign="center">List of Events</Header>
           <Table celled>
             <Table.Header>
               <Table.Row>
@@ -32,7 +32,7 @@ class ListStuff extends React.Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
+              {this.props.events.map((stuff) => <EventItem key={stuff._id} stuff={stuff} />)}
             </Table.Body>
           </Table>
         </Container>
@@ -41,8 +41,8 @@ class ListStuff extends React.Component {
 }
 
 /** Require an array of Stuff documents in the props. */
-ListStuff.propTypes = {
-  stuffs: PropTypes.array.isRequired,
+ListEvents.propTypes = {
+  events: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -51,7 +51,7 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Events');
   return {
-    stuffs: Events.find({}).fetch(),
+    events: Events.find({}).fetch(),
     ready: subscription.ready(),
   };
-})(ListStuff);
+})(ListEvents);

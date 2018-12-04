@@ -12,7 +12,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { Meteor } from 'meteor/meteor';
 
 /** Renders the Page for adding a document. */
-class AddStuff extends React.Component {
+class AddEvent extends React.Component {
 
   /** Bind 'this' so that a ref to the Form can be saved in formRef and communicated between render() and submit(). */
   constructor(props) {
@@ -62,4 +62,4 @@ class AddStuff extends React.Component {
   }
 }
 
-export default AddStuff;
+export default AddEvent;
