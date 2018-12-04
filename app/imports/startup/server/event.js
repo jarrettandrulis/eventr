@@ -7,7 +7,12 @@ import { Events } from '../../api/events/events.js';
 Meteor.publish('Events', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Events.find({ owner: username });
+    return Events.find({
+      $or: [
+        { owner: username },
+        { visibility: 'public' },
+      ],
+    });
   }
   return this.ready();
 });

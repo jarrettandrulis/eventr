@@ -1,5 +1,6 @@
 /* eslint-disable prefer-template */
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
@@ -14,10 +15,12 @@ class StuffItem extends React.Component {
           <Table.Cell>
             <a href={'https://maps.google.com/?q=' + this.props.stuff.address}>{this.props.stuff.address}</a>
           </Table.Cell>
-          <Table.Cell>{this.props.stuff.date.toString().slice(0, 20)}</Table.Cell>
+          <Table.Cell>{this.props.stuff.date.toString().slice(0, 25)}</Table.Cell>
           <Table.Cell>{this.props.stuff.visibility}</Table.Cell>
           <Table.Cell>
-            <Link to={`/edit/${this.props.stuff._id}`}>Edit</Link>
+            {this.props.stuff.owner === Meteor.user().username ?
+            (<Link to={`/edit/${this.props.stuff._id}`}>Edit</Link>) :
+            (<p>Cannot Edit</p>) }
           </Table.Cell>
         </Table.Row>
     );
