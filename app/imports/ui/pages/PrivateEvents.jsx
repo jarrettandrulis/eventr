@@ -28,7 +28,7 @@ class ListEvents extends React.Component {
                 <Table.HeaderCell>Address</Table.HeaderCell>
                 <Table.HeaderCell>Date</Table.HeaderCell>
                 <Table.HeaderCell>Visibility</Table.HeaderCell>
-                <Table.HeaderCell>Edit</Table.HeaderCell>
+                <Table.HeaderCell>Options</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>

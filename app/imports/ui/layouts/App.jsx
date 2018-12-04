@@ -15,7 +15,6 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 
-/** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
   render() {
     return (
@@ -26,11 +25,11 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <ProtectedRoute path="/list" component={ListEvents}/>
-              <ProtectedRoute path="/mylist" component={PrivateEvents}/>
-              <ProtectedRoute path="/add" component={AddEvent}/>
-              <ProtectedRoute path="/edit/:_id" component={ChangeEvent}/>
-              <ProtectedRoute path="/signout" component={Signout}/>
+              <LoggedInRoute path="/list" component={ListEvents}/>
+              <LoggedInRoute path="/mylist" component={PrivateEvents}/>
+              <LoggedInRoute path="/add" component={AddEvent}/>
+              <LoggedInRoute path="/edit/:_id" component={ChangeEvent}/>
+              <LoggedInRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
             <Footer/>
@@ -40,17 +39,11 @@ class App extends React.Component {
   }
 }
 
-/**
- * ProtectedRoute (see React Router v4 sample)
- * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
- * @param {any} { component: Component, ...rest }
- */
-const ProtectedRoute = ({ component: Component, ...rest }) => (
+const LoggedInRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
-      const isLogged = Meteor.userId() !== null;
-      return isLogged ?
+      return Meteor.userId() ?
           (<Component {...props} />) :
           (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
       );
@@ -58,9 +51,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-
-/** Require a component and location to be passed to each ProtectedRoute. */
-ProtectedRoute.propTypes = {
+LoggedInRoute.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.object,
 };
