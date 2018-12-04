@@ -56,7 +56,6 @@ export default class Signin extends React.Component {
                 <Segment stacked>
                   <Form.Input
                       label="Email"
-                      iconPosition="left"
                       name="email"
                       type="email"
                       placeholder="E-mail address"
@@ -64,7 +63,6 @@ export default class Signin extends React.Component {
                   />
                   <Form.Input
                       label="Password"
-                      iconPosition="left"
                       name="password"
                       placeholder="Password"
                       type="password"

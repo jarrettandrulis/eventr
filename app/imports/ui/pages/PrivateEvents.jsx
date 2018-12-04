@@ -19,7 +19,7 @@ class ListEvents extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h1" textAlign="center">Public Events</Header>
+          <Header as="h1" textAlign="center">Private Events</Header>
           <Table celled>
             <Table.Header>
               <Table.Row>
@@ -49,7 +49,7 @@ ListEvents.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('PublicEvents');
+  const subscription = Meteor.subscribe('PrivateEvents');
   return {
     events: Events.find({}).fetch(),
     ready: subscription.ready(),

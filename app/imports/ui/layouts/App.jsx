@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListEvents from '../pages/ListEvents';
+import PrivateEvents from '../pages/PrivateEvents';
 import AddEvent from '../pages/AddEvent';
 import ChangeEvent from '../pages/ChangeEvent';
 import NotFound from '../pages/NotFound';
@@ -26,6 +27,7 @@ class App extends React.Component {
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/list" component={ListEvents}/>
+              <ProtectedRoute path="/mylist" component={PrivateEvents}/>
               <ProtectedRoute path="/add" component={AddEvent}/>
               <ProtectedRoute path="/edit/:_id" component={ChangeEvent}/>
               <ProtectedRoute path="/signout" component={Signout}/>
