@@ -25,8 +25,8 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <LoggedInRoute path="/list" component={ListEvents}/>
-              <LoggedInRoute path="/mylist" component={PrivateEvents}/>
+              <LoggedInRoute path="/pub" component={ListEvents}/>
+              <LoggedInRoute path="/priv" component={PrivateEvents}/>
               <LoggedInRoute path="/add" component={AddEvent}/>
               <LoggedInRoute path="/edit/:_id" component={ChangeEvent}/>
               <LoggedInRoute path="/signout" component={Signout}/>
