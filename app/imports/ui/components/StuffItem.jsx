@@ -9,8 +9,8 @@ class StuffItem extends React.Component {
     return (
         <Table.Row>
           <Table.Cell>{this.props.stuff.name}</Table.Cell>
-          <Table.Cell>{this.props.stuff.quantity}</Table.Cell>
-          <Table.Cell>{this.props.stuff.condition}</Table.Cell>
+          <Table.Cell>{this.props.stuff.date}</Table.Cell>
+          <Table.Cell>{this.props.stuff.visibility}</Table.Cell>
           <Table.Cell>
             <Link to={`/edit/${this.props.stuff._id}`}>Edit</Link>
           </Table.Cell>

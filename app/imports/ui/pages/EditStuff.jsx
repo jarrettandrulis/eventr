@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
-import { Stuffs, StuffSchema } from '/imports/api/stuff/stuff';
+import { Events, EventSchema } from '/imports/api/events/events';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
-import NumField from 'uniforms-semantic/NumField';
+import DateField from 'uniforms-semantic/DateField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
 import HiddenField from 'uniforms-semantic/HiddenField';
@@ -18,8 +18,8 @@ class EditStuff extends React.Component {
 
   /** On successful submit, insert the data. */
   submit(data) {
-    const { name, quantity, condition, _id } = data;
-    Stuffs.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    const { name, date, visibility, _id } = data;
+    Events.update(_id, { $set: { name, date, visibility } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Update succeeded' })));
   }
@@ -35,11 +35,11 @@ class EditStuff extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center">Edit Stuff</Header>
-            <AutoForm schema={StuffSchema} onSubmit={this.submit} model={this.props.doc}>
+            <AutoForm schema={EventSchema} onSubmit={this.submit} model={this.props.doc}>
               <Segment>
                 <TextField name='name'/>
-                <NumField name='quantity' decimal={false}/>
-                <SelectField name='condition'/>
+                <DateField name='date' />
+                <SelectField name='visibility'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
                 <HiddenField name='owner' />
@@ -65,7 +65,7 @@ export default withTracker(({ match }) => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Stuff');
   return {
-    doc: Stuffs.findOne(documentId),
+    doc: Events.findOne(documentId),
     ready: subscription.ready(),
   };
 })(EditStuff);

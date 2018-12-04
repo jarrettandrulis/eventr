@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Container, Table, Header, Loader } from 'semantic-ui-react';
-import { Stuffs } from '/imports/api/stuff/stuff';
+import { Events } from '/imports/api/events/events';
 import StuffItem from '/imports/ui/components/StuffItem';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListStuff extends React.Component {
@@ -23,8 +24,8 @@ class ListStuff extends React.Component {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Quantity</Table.HeaderCell>
-                <Table.HeaderCell>Condition</Table.HeaderCell>
+                <Table.HeaderCell>Date</Table.HeaderCell>
+                <Table.HeaderCell>Visibility</Table.HeaderCell>
                 <Table.HeaderCell>Edit</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -48,7 +49,7 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe('Stuff');
   return {
-    stuffs: Stuffs.find({}).fetch(),
+    stuffs: Events.find({}).fetch(),
     ready: subscription.ready(),
   };
 })(ListStuff);
