@@ -10,6 +10,7 @@ const EventSchema = new SimpleSchema({
   name: String,
   owner: String,
   date: Date,
+  address: String,
   visibility: {
     type: String,
     allowedValues: ['private', 'public'],

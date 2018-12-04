@@ -34,9 +34,9 @@ class AddStuff extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { name, date, visibility } = data;
+    const { name, address, date, visibility } = data;
     const owner = Meteor.user().username;
-    Events.insert({ name, date, visibility, owner }, this.insertCallback);
+    Events.insert({ name, address, date, visibility, owner }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -48,6 +48,7 @@ class AddStuff extends React.Component {
             <AutoForm ref={(ref) => { this.formRef = ref; }} schema={EventSchema} onSubmit={this.submit}>
               <Segment>
                 <TextField name='name'/>
+                <TextField name='address'/>
                 <DateField name='date' />
                 <SelectField name='visibility'/>
                 <SubmitField value='Submit'/>

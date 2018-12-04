@@ -24,6 +24,8 @@ class ListStuff extends React.Component {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Creator</Table.HeaderCell>
+                <Table.HeaderCell>Address</Table.HeaderCell>
                 <Table.HeaderCell>Date</Table.HeaderCell>
                 <Table.HeaderCell>Visibility</Table.HeaderCell>
                 <Table.HeaderCell>Edit</Table.HeaderCell>
@@ -47,7 +49,7 @@ ListStuff.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Stuff');
+  const subscription = Meteor.subscribe('Events');
   return {
     stuffs: Events.find({}).fetch(),
     ready: subscription.ready(),
