@@ -16,7 +16,7 @@ class ListEvents extends React.Component {
   renderPage() {
     return (
         <Container>
-          <Header as="h1" textAlign="center">Private Events</Header>
+          <Header as="h1" textAlign="center">My Events</Header>
           <Table celled>
             <Table.Header>
               <Table.Row>

@@ -16,9 +16,10 @@ class ShareEvent extends React.Component {
   renderPage() {
     return (
       <Container>
-        {this.props.doc.owner === Meteor.user().username ?
-        (<Header as="h1" textAlign="center">Copy and Paste this link to share {this.props.doc.name}!</Header>):
-        (<Header as="h1" textAlign="center">Congratulations on being invited to {this.props.doc.name}!</Header>)}
+        {Meteor.user() && this.props.doc.owner===Meteor.user().username?
+          (<Header as="h1" textAlign="center">Copy the url to share {this.props.doc.name} with others!</Header>):
+          (<Header as="h1" textAlign="center">Congratulations on being invited to {this.props.doc.name}!</Header>)
+        }
         <Table celled textAlign="center" verticalAlign="middle">
           <Table.Header>
             <Table.Row>

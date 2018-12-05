@@ -14,12 +14,17 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
 class ChangeEvent extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { redirect: false };
+  }
 
   submit(data) {
     const { name, address, date, visibility, _id } = data;
     Events.update(_id, { $set: { name, address, date, visibility } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
-        Bert.alert({ type: 'success', message: 'Update succeeded' })));
+        Bert.alert({ type: 'success', message: 'Event Updated' })));
   }
 
   render() {
@@ -30,7 +35,7 @@ class ChangeEvent extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Edit Stuff</Header>
+            <Header as="h2" textAlign="center">Edit Event</Header>
             <AutoForm schema={EventSchema} onSubmit={this.submit} model={this.props.doc}>
               <Segment>
                 <TextField name='name'/>
