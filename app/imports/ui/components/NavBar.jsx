@@ -55,7 +55,6 @@ class NavBar extends React.Component {
 
 
 class MyModal extends React.Component {
-    /** Bind 'this' so that a ref to the Form can be saved in formRef and communicated between render() and submit(). */
     state = { modalOpen: false };
 
     handleClose = () => this.setState({ modalOpen: false });
@@ -69,7 +68,6 @@ class MyModal extends React.Component {
       this.formRef = null;
     }
 
-    /** Notify the user of the results of the submit. If successful, clear the form. */
     insertCallback(error) {
       if (error) {
         Bert.alert({ type: 'danger', message: `Add failed: ${error.message}` });
@@ -122,15 +120,12 @@ class MyModal extends React.Component {
     );
   }
 }
-/** Declare the types of all properties. */
 NavBar.propTypes = {
   currentUser: PropTypes.string,
 };
 
-/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 const NavBarContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
 }))(NavBar);
 
-/** Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter */
 export default withRouter(NavBarContainer);

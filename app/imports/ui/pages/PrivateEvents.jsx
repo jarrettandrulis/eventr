@@ -7,15 +7,12 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
 
-/** Renders a table containing all of the Stuff documents. Use <EventItem> to render each row. */
 class ListEvents extends React.Component {
 
-  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
 
-  /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
         <Container>
@@ -32,7 +29,7 @@ class ListEvents extends React.Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {this.props.events.map((stuff) => <EventItem key={stuff._id} stuff={stuff} />)}
+              {this.props.events.map((event) => <EventItem key={event._id} event={event} />)}
             </Table.Body>
           </Table>
         </Container>
@@ -40,15 +37,12 @@ class ListEvents extends React.Component {
   }
 }
 
-/** Require an array of Stuff documents in the props. */
 ListEvents.propTypes = {
   events: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
-/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
-  // Get access to Stuff documents.
   const subscription = Meteor.subscribe('PrivateEvents');
   return {
     events: Events.find({}).fetch(),

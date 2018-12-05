@@ -4,7 +4,6 @@ import { Meteor } from 'meteor/meteor';
 import 'semantic-ui-css/semantic.css';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListEvents from '../pages/ListEvents';
 import PrivateEvents from '../pages/PrivateEvents';
@@ -32,13 +31,11 @@ class App extends React.Component {
               <LoggedInRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
-            <Footer/>
           </div>
         </Router>
     );
   }
 }
-
 const LoggedInRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -48,7 +45,6 @@ const LoggedInRoute = ({ component: Component, ...rest }) => (
       ))}
   />
 );
-
 LoggedInRoute.propTypes = {
   component: PropTypes.func.isRequired,
   location: PropTypes.object,
