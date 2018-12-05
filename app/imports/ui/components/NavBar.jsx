@@ -81,6 +81,7 @@ class MyModal extends React.Component {
     /** On submit, insert the data. */
     submit(data) {
       const { name, address, date, visibility } = data;
+      date.setHours((date.getHours() + (date.getTimezoneOffset() / 60)) % 24, date.getMinutes(), 0, 0);
       const owner = Meteor.user().username;
       Events.insert({ name, address, date, visibility, owner }, this.insertCallback);
     }

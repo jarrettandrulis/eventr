@@ -14,7 +14,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
 class ChangeEvent extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = { redirect: false };
@@ -22,6 +22,7 @@ class ChangeEvent extends React.Component {
 
   submit(data) {
     const { name, address, date, visibility, _id } = data;
+    date.setHours((date.getHours() + (date.getTimezoneOffset() / 60)) % 24, date.getMinutes(), 0, 0);
     Events.update(_id, { $set: { name, address, date, visibility } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Event Updated' })));

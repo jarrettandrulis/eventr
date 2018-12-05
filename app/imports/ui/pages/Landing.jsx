@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import { Meteor} from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
+import { Redirect } from 'react-router-dom';
 
 class Landing extends React.Component {
   render() {

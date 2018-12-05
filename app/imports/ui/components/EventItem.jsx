@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable prefer-template */
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
@@ -20,7 +21,9 @@ class EventItem extends React.Component {
             {this.props.event.owner === Meteor.user().username ?
             (<Link to={`/edit/${this.props.event._id}`}>Edit</Link>) :
             (<p>Cannot Edit</p>) }
-            {this.props.event.visibility==='public'?([' | ',<Link to={`/share/${this.props.event._id}`}>Share</Link>]):('')}
+            {this.props.event.visibility === 'public' ?
+            ([' | ', <Link to={`/share/${this.props.event._id}`}>Share</Link>]) :
+            ('')}
           </Table.Cell>
         </Table.Row>
     );

@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 
 class ShareEvent extends React.Component {
 
-
-
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }

@@ -77,7 +77,6 @@ export default class Signin extends React.Component {
   }
 }
 
-/** Ensure that the React Router location object is available in case we need to redirect. */
 Signin.propTypes = {
   location: PropTypes.object,
 };
