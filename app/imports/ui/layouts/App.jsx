@@ -5,7 +5,6 @@ import 'semantic-ui-css/semantic.css';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Landing from '../pages/Landing';
-import ListEvents from '../pages/ListEvents';
 import PrivateEvents from '../pages/PrivateEvents';
 // import AddEvent from '../pages/AddEvent';
 import ChangeEvent from '../pages/ChangeEvent';
@@ -13,6 +12,7 @@ import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import ShareEvent from '../pages/ShareEvent';
 
 class App extends React.Component {
   render() {
@@ -24,8 +24,8 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <LoggedInRoute path="/pub" component={ListEvents}/>
-              <LoggedInRoute path="/priv" component={PrivateEvents}/>
+              <Route path="/share/:_id" component={ShareEvent}/>
+              <LoggedInRoute path="/events" component={PrivateEvents}/>
 
               <LoggedInRoute path="/edit/:_id" component={ChangeEvent}/>
               <LoggedInRoute path="/signout" component={Signout}/>

@@ -21,16 +21,16 @@ class NavBar extends React.Component {
     return (
       <Menu style={menuStyle} attached="top" inverted>
         {this.props.currentUser ? (
-          <Menu.Item as={NavLink} activeClassName="" exact to="/priv">
+          <Menu.Item as={NavLink} activeClassName="" exact to="/events">
             <Header inverted as='h1'>eventr</Header>
           </Menu.Item>) : (
           <Menu.Item as={NavLink} activeClassName="" exact to="/">
             <Header inverted as='h1'>eventr</Header>
           </Menu.Item>)}
         {this.props.currentUser ? (
-            [<MyModal activeClassName="active" exact to="/priv" key='priv'/>,
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/priv" key='priv'>My Events</Menu.Item>,
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/pub" key='pub'>Public Events</Menu.Item>]
+            [<MyModal activeClassName="active" exact to="/events" key='events'/>,
+              <Menu.Item as={NavLink} activeClassName="active" exact to="/events" key='events'>My Events</Menu.Item>,
+              ]
         ) : ''}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (

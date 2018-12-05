@@ -30,7 +30,7 @@ export default class Signin extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to='/priv'/>;
+      return <Redirect to='/events'/>;
     }
     return (
         <Container>

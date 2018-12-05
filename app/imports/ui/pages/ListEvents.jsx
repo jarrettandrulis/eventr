@@ -29,7 +29,7 @@ class ListEvents extends React.Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {this.props.events.map((stuff) => <EventItem key={stuff._id} stuff={stuff} />)}
+              {this.props.events.map((event) => <EventItem key={event._id} event={event} />)}
             </Table.Body>
           </Table>
         </Container>
@@ -42,7 +42,6 @@ ListEvents.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 export default withTracker(() => {
-  // Get access to Stuff documents.
   const subscription = Meteor.subscribe('PublicEvents');
   return {
     events: Events.find({}).fetch(),

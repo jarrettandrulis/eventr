@@ -20,6 +20,8 @@ class EventItem extends React.Component {
             {this.props.event.owner === Meteor.user().username ?
             (<Link to={`/edit/${this.props.event._id}`}>Edit</Link>) :
             (<p>Cannot Edit</p>) }
+            <p></p>&nbsp;|&nbsp;
+            <Link to={`/share/${this.props.event._id}`}>Share</Link>
           </Table.Cell>
         </Table.Row>
     );

@@ -30,7 +30,7 @@ export default class Signup extends React.Component {
   render() {
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirect) {
-      return <Redirect to='/priv'/>;
+      return <Redirect to='/events'/>;
     }
     return (
         <Container>
