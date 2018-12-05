@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListEvents from '../pages/ListEvents';
 import PrivateEvents from '../pages/PrivateEvents';
-import AddEvent from '../pages/AddEvent';
+// import AddEvent from '../pages/AddEvent';
 import ChangeEvent from '../pages/ChangeEvent';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -27,7 +27,7 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <LoggedInRoute path="/pub" component={ListEvents}/>
               <LoggedInRoute path="/priv" component={PrivateEvents}/>
-              <LoggedInRoute path="/add" component={AddEvent}/>
+
               <LoggedInRoute path="/edit/:_id" component={ChangeEvent}/>
               <LoggedInRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
@@ -42,12 +42,10 @@ class App extends React.Component {
 const LoggedInRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={(props) => {
-      return Meteor.userId() ?
+    render={(props) => (Meteor.userId() ?
           (<Component {...props} />) :
           (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
-      );
-    }}
+      ))}
   />
 );
 

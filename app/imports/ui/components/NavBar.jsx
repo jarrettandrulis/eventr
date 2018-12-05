@@ -66,7 +66,7 @@ class MyModal extends React.Component {
       super(props);
       this.submit = this.submit.bind(this);
       this.insertCallback = this.insertCallback.bind(this);
-      this.formRef = null;   
+      this.formRef = null;
     }
 
     /** Notify the user of the results of the submit. If successful, clear the form. */
@@ -89,7 +89,13 @@ class MyModal extends React.Component {
 
   render() {
     return (
-      <Modal trigger={<Menu.Item activeClassName="active" exact to="/add" key='add' onClick={this.handleOpen}>Create an Event</Menu.Item>}
+      <Modal trigger={<Menu.Item
+                        activeClassName="active"
+                        exact to="/add"
+                        key='add'
+                        onClick={this.handleOpen}>
+                        Create an Event
+                      </Menu.Item>}
       open={this.state.modalOpen}
       onClose={this.handleClose}
       >
