@@ -1,8 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Events } from '../../api/events/events.js';
 
-
-/** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('PublicEvents', function publish() {
     return Events.find({ visibility: 'public' });
 });
