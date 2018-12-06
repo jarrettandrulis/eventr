@@ -13,6 +13,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import ShareEvent from '../pages/ShareEvent';
+import Remove from '../pages/RemoveEvent';
 
 class App extends React.Component {
   render() {
@@ -28,6 +29,7 @@ class App extends React.Component {
               <LoggedInRoute path="/events" component={PrivateEvents}/>
 
               <LoggedInRoute path="/edit/:_id" component={ChangeEvent}/>
+              <LoggedInRoute path="/remove/:_id" component={Remove}/>
               <LoggedInRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
