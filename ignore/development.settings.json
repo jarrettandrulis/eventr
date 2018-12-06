@@ -1,9 +1,0 @@
-{
-  "galaxy.meteor.com": {
-     "env": {
-       "MONGO_URL": "mongodb://user:VotetnAOq2xZbNQx@cluster0-shard-00-00-teddn.mongodb.net:27017,cluster0-shard-00-01-teddn.mongodb.net:27017,cluster0-shard-00-02-teddn.mongodb.net:27017/test"
-      },
-     "public": {},
-    "private": {}
-   }
-}
